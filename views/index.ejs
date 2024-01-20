@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jordan Shoes App</title>
+  <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+  <h1>Jordan Shoe Models and Colorways</h1>
+
+  <% models.forEach(model => { %>
+    <h2><%= model.name %></h2>
+    <ul>
+      <% colorways.filter(cw => cw.modelName === model.name).forEach(colorway => { %>
+        <li><%= colorway.name %></li>
+      <% }); %>
+    </ul>
+  <% }); %>
+
+  <!-- Form for adding a new colorway -->
+  <form action="/api/colorways" method="POST">
+    <label for="modelName">Model Name:</label>
+    <input type="text" id="modelName" name="modelName" required>
+
+    <label for="colorwayName">Colorway Name:</label>
+    <input type="text" id="colorwayName" name="name" required>
+
+    <button type="submit">Add Colorway</button>
+  </form>
+</body>
+</html>
